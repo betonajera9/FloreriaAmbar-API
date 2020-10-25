@@ -2,6 +2,9 @@ import Express, { Application } from 'express'
 import Morgan from 'morgan'
 import Cors from 'cors'
 
+//Routes
+import Products from './routes/product'
+
 //Initialization
 const app: Application = Express()
 
@@ -21,7 +24,10 @@ app.use(Express.json())
 app.use(Cors())
 
 // Routes
-// app.use('/api')
+app.get('/', function (req, res) {
+	res.send('Hello World!') // This will serve your request to '/'.
+})
+app.use('/api', Products)
 
 //Start server
 app.listen(app.get('port'), () => {
